@@ -90,4 +90,15 @@ class PeliculaController extends Controller
         $pelicula = Pelicula::where('nombre', 'like', $request->nombre."%")->get();
         return response($pelicula, 201);
     }
+
+    public function obtenerImagen($id)
+    {
+        $pelicula = Pelicula::find($id);
+        if (is_null($pelicula)) {
+            return response()->json(['msg' => 'Película no encontrada'], 404);
+        } else {
+            return Storage::response('public/' . $pelicula->imagen);
+        }
+    }
+    
 }

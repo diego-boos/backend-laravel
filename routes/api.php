@@ -3,6 +3,7 @@
 use App\Http\Controllers\PeliculaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Storage;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,3 +37,6 @@ Route::delete('eliminarPelicula/{id}', [PeliculaController::class,'eliminarPelic
 
 // buscar película
 Route::get('buscarPelicula', [PeliculaController::class,'buscarPelicula']);
+
+//mostrar imagen
+Route::get('/uploads/{id}', [PeliculaController::class,'obtenerImagen']);
