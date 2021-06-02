@@ -29,6 +29,9 @@ Route::get('obtenerPeliculaById/{id}', [PeliculaController::class,'obtenerPelicu
 // agregar nueva pelicula
 Route::post('crearPelicula',[PeliculaController::class,'crearPelicula']);
 
+// agregar nueva imagen
+Route::post('crearImagen/{id}',[PeliculaController::class,'crearImagen']);
+
 // actualizar pelicula
 Route::put('actualizarPelicula/{id}', [PeliculaController::class,'actualizarPelicula']);
 

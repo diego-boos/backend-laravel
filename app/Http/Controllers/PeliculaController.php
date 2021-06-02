@@ -28,12 +28,6 @@ class PeliculaController extends Controller
 
         $pelicula = new Pelicula();
 
-        if ($request->hasFile('imagen')) {
-            $pelicula->imagen = $request->file('imagen')->store('uploads', 'public');
-        } else {
-            $pelicula->imagen = '';
-        }
-
         $pelicula->nombre = $request->nombre;
         $pelicula->descripcion = $request->descripcion;
         $pelicula->genero = $request->genero;
@@ -44,20 +38,33 @@ class PeliculaController extends Controller
         return response($pelicula, 201);
     }
 
-    public function actualizarPelicula(Request $request, $id)
-    {
-        $pelicula = Pelicula::find($id);
-        if (is_null($pelicula)) {
-            return response()->json(['msg' => 'Película no encontrada'], 404);
-        } else {
-            if ($request->hasFile('imagen')) {
+    public function crearImagen(Request $request, $id) {
+
+        if ($request->hasFile('imagen')) {
+            
+            $pelicula = Pelicula::find($id);
+
+            if (is_null($pelicula)) {
+                return response()->json(['msg' => 'Película no encontrada'], 404);
+            } else {
                 if ($pelicula->imagen != "") {
                     Storage::delete('public/' . $pelicula->imagen);
                     $pelicula->imagen = $request->file('imagen')->store('uploads', 'public');
                 } else {
                     $pelicula->imagen = $request->file('imagen')->store('uploads', 'public');
                 }
+                $pelicula->save();
+                return response()->json(['msg' => 'datos actualizados'], 200);
             }
+        } 
+    }
+
+    public function actualizarPelicula(Request $request, $id)
+    {
+        $pelicula = Pelicula::find($id);
+        if (is_null($pelicula)) {
+            return response()->json(['msg' => 'Película no encontrada'], 404);
+        } else {
             $pelicula->nombre = $request->nombre;
             $pelicula->descripcion = $request->descripcion;
             $pelicula->genero = $request->genero;
