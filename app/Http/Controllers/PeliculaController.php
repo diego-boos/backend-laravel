@@ -94,7 +94,7 @@ class PeliculaController extends Controller
 
     public function buscarPelicula(Request $request)
     {
-        $pelicula = Pelicula::where('nombre', 'like', $request->nombre."%")->get();
+        $pelicula = Pelicula::where('nombre', 'like', "%{$request->nombre}%")->get();
         return response($pelicula, 201);
     }
 
