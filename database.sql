@@ -108,10 +108,10 @@ CREATE TABLE `peliculas` (
   `descripcion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `genero` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `duracion` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `imagen` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `anio` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -120,7 +120,7 @@ CREATE TABLE `peliculas` (
 
 LOCK TABLES `peliculas` WRITE;
 /*!40000 ALTER TABLE `peliculas` DISABLE KEYS */;
-INSERT INTO `peliculas` VALUES (6,'2021-05-30 05:16:42','2021-05-30 05:16:42','Endgame','Última película de los vengadores','Ciencia Ficción','3 horas','uploads/Bnxr6hWKSXOVd8DWnxCEpX01BlgHykIx6nhCv7JU.jpg',2019);
+INSERT INTO `peliculas` VALUES (6,'2021-05-30 05:16:42','2021-06-02 04:30:56','Avengers Endgame','Última película de los vengadores','Acción / Ciencia Ficción','3 horas','uploads/Bnxr6hWKSXOVd8DWnxCEpX01BlgHykIx6nhCv7JU.jpg',2019),(36,'2021-06-02 06:59:03','2021-06-02 07:02:05','rocky 6','rocky balboa','Box','2h 30m','uploads/m1wwEHwKzoga2hUi7t5wil0F4oFSPfoqKjfrs227.jpg',2006);
 /*!40000 ALTER TABLE `peliculas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -163,4 +163,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-05-30 17:17:02
+-- Dump completed on 2021-06-01 21:17:18
